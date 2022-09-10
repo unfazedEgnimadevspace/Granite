@@ -4,6 +4,8 @@ import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 
 import { setAuthHeaders } from "./apis/axios";
 import { initializeLogger } from "./common/logger";
+import DashBoard from "./components/Dashboard";
+import PageLoader from "./components/PageLoader";
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -14,7 +16,9 @@ const App = () => {
   }, []);
 
   if (loading) {
-    <h1>Loading....</h1>;
+    <div className="h-screen">
+      <PageLoader />
+    </div>;
   }
 
   return (
@@ -22,6 +26,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" render={() => <div>Home</div>} />
         <Route exact path="/about" render={() => <div>About</div>} />
+        <Route exact path="/dashboard" render={() => <DashBoard />} />
       </Switch>
     </Router>
   );
