@@ -12,7 +12,7 @@
   "ruby.useLanguageServer": true, // use the internal language server (see below)
   "ruby.lint": {
     "rubocop": {
-      "useBundler": true,
+      "useBundler": false,
       "lint": true, // enable lint cops
       "rails": true // requires rubocop-rails gem for RuboCop >= 0.72.0
     }

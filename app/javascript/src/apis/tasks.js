@@ -2,6 +2,14 @@ import axios from "axios";
 
 const list = () => axios.get("/tasks");
 
-const tasksApis = { list };
+const create = payload =>
+  axios.post("/tasks", {
+    task: payload,
+  });
 
-export default tasksApis;
+const tasksApi = {
+  list,
+  create,
+};
+
+export default tasksApi;
