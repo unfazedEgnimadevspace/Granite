@@ -29,6 +29,15 @@ const Dashboard = ({ history }) => {
     history.push(`/tasks/${slug}/show`);
   };
 
+  const destroyTask = async slug => {
+    try {
+      await tasksApi.destroy({ slug });
+      await fetchTasks();
+    } catch (error) {
+      Logger.error(error);
+    }
+  };
+
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -53,7 +62,7 @@ const Dashboard = ({ history }) => {
 
   return (
     <Container>
-      <Table data={tasks} showTask={showTask} />
+      <Table data={tasks} destroyTask={destroyTask} showTask={showTask} />
     </Container>
   );
 };
