@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 
+import Logger from "js-logger";
 import { isNil, isEmpty, either } from "ramda";
-import { useHistory } from "react-router-dom";
 
 import tasksApi from "apis/tasks";
 import Container from "components/Container";
 import PageLoader from "components/PageLoader";
 import Table from "components/Tasks/Table";
 
-const Dashboard = () => {
+const Dashboard = ({ history }) => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const history = useHistory();
+
   const fetchTasks = async () => {
     try {
       const {
@@ -20,10 +20,11 @@ const Dashboard = () => {
       setTasks(tasks);
       setLoading(false);
     } catch (error) {
-      logger.error(error);
+      Logger.error(error);
       setLoading(false);
     }
   };
+
   const showTask = slug => {
     history.push(`/tasks/${slug}/show`);
   };

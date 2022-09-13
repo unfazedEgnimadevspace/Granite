@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import Logger from "js-logger";
 import { useHistory } from "react-router-dom";
 
 import tasksApi from "apis/tasks";
@@ -20,7 +21,7 @@ const Create = () => {
       setLoading(false);
       history.push("/dashboard");
     } catch (error) {
-      logger.error(error);
+      Logger.error(error);
       setLoading(false);
     }
   };
