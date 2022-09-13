@@ -15,7 +15,10 @@ const Input = ({
 }) => (
   <div className="mt-6">
     {label && (
-      <label className="block text-sm font-medium leading-5 text-bb-gray-700">
+      <label
+        className="block text-sm font-medium
+              leading-5 text-bb-gray-700"
+      >
         {label}
       </label>
     )}
@@ -35,6 +38,7 @@ const Input = ({
     </div>
   </div>
 );
+
 Input.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string,

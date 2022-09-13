@@ -1,28 +1,31 @@
 import React, { useState, useEffect } from "react";
 
-import Logger from "js-logger";
 import { isNil, isEmpty, either } from "ramda";
+import { useHistory } from "react-router-dom";
 
-import tasksApis from "apis/tasks";
+import tasksApi from "apis/tasks";
 import Container from "components/Container";
 import PageLoader from "components/PageLoader";
 import Table from "components/Tasks/Table";
 
-const DashBoard = () => {
+const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const history = useHistory();
   const fetchTasks = async () => {
     try {
       const {
         data: { tasks },
-      } = await tasksApis.list();
+      } = await tasksApi.list();
       setTasks(tasks);
       setLoading(false);
     } catch (error) {
-      Logger.error(error);
+      logger.error(error);
       setLoading(false);
     }
+  };
+  const showTask = slug => {
+    history.push(`/tasks/${slug}/show`);
   };
 
   useEffect(() => {
@@ -41,7 +44,7 @@ const DashBoard = () => {
     return (
       <Container>
         <h1 className="text-center text-xl leading-5">
-          You have no tasks assigned 😥
+          You have no tasks assigned 😔
         </h1>
       </Container>
     );
@@ -49,9 +52,9 @@ const DashBoard = () => {
 
   return (
     <Container>
-      <Table data={tasks} />
+      <Table data={tasks} showTask={showTask} />
     </Container>
   );
 };
 
-export default DashBoard;
+export default Dashboard;

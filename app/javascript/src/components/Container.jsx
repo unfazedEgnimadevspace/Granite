@@ -3,7 +3,7 @@ import React from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
-import NavBar from "./NavBar";
+import NavBar from "components/NavBar";
 
 const Container = ({ children, className = "" }) => (
   <>
@@ -17,6 +17,7 @@ const Container = ({ children, className = "" }) => (
     </div>
   </>
 );
+
 Container.propTypes = {
   children: PropTypes.node.isRequired,
 };

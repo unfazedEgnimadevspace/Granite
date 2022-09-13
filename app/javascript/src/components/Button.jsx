@@ -1,6 +1,3 @@
-/* eslint-disable react/jsx-filename-extension */
-// eslint-disable-next-line prettier/prettier
-
 import React from "react";
 
 import classnames from "classnames";
@@ -24,13 +21,10 @@ const Button = ({
   return (
     <div className="mt-6">
       <button
-        type={type}
-        // eslint-disable-next-line react/jsx-sort-props
-        onClick={handleClick}
         disabled={loading}
+        type={type}
         className={classnames(
           [className],
-          // eslint-disable-next-line prettier/prettier
           "transition border hover:bg-opacity-90 focus:outline-none group relative flex w-full justify-center rounded-md border-transparent px-4 py-2  text-sm font-medium leading-5 text-white duration-150 ease-in-out",
           {
             "bg-bb-purple": !loading,
@@ -38,6 +32,7 @@ const Button = ({
             "cursor-wait": loading,
           }
         )}
+        onClick={handleClick}
       >
         {loading ? "Loading..." : buttonText}
       </button>
