@@ -4,7 +4,7 @@ import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
 
 const Table = ({ data, showTask, destroyTask }) => (
-  <div className="flex flex-col">
+  <div className="mt-6 flex flex-col">
     <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
         <div className="border-b border-bb-gray-200 shadow overflow-hidden sm:rounded-lg">
