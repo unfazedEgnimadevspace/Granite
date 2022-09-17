@@ -2,6 +2,8 @@
 
 class User < ApplicationRecord
   has_many :assigned_task, class_name: "Task", foreign_key: :assigned_user_id
+  has_many :created_tasks, class_name: "Task", foreign_key: :task_owner_id
+  before_destroy :assign_task_to_task_owner
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
   has_secure_password
   has_secure_token :authentication_token
@@ -19,5 +21,12 @@ class User < ApplicationRecord
 
     def to_lowercase
       email.downcase!
+    end
+
+    def assign_task_to_task_owner
+      task_whose_owner_is_not_current_user = assigned_tasks.select { |task| task.task_owner_id != id }
+      task_whose_owner_is_not_current_user.each do |task|
+        task.update(assigned_user_id: task.task_owner_id)
+      end
     end
 end
