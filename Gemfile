@@ -27,7 +27,7 @@ gem "net-smtp", require: false
 gem "react-rails"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.4", require: false
-
+gem "simplecov", require: false, group: :test
 group :development, :test do
   gem "rubocop"
   gem "rubocop-rails"
