@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_secure_password
   has_secure_token :authentication_token
   MAXIMUM_NAME_LENGTH = 35
-  MAXIMUM_EMAIL_LENGTH = 35
+  MAXIMUM_EMAIL_LENGTH = 255
   validates :name, presence: true, length: { maximum: MAXIMUM_NAME_LENGTH }
   validates :email, presence: true, length: { maximum: MAXIMUM_EMAIL_LENGTH }, format: { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sensitive: false }
